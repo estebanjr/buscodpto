@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Db flnm="acl" nm="acl" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>\var\www\repositorios\acl\sql</DocFolder>
+  <Sch Cm="" nm="schemaA">
+    <Tbl UsSo="1" nm="adresses">
+      <TblOpts/>
+      <Pk ClNs="adress_id" nm="pkadresses"/>
+      <Cl au="0" df="" nm="adress_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="adress" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="city" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="state" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="postal_code" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="country" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="city">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkcity"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_country" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="country" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="country" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="city" oe="1" sch="schemaA" zr="0"/>
+        <ClPr cdCl="id_country" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="id_city" prLkCl="id_city" upAc="3">
+        <PrTb mn="0" nm="property" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="0" nm="city" oe="1" sch="schemaA" zr="0"/>
+        <ClPr cdCl="id" prCl="id_city"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="country">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkcountry"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="entry_control">
+      <Cm>entry control of the system</Cm>
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkentry_control"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="last_entry" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="session_length" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>who much time what activ the session of the user</Cm>
+      </Cl>
+      <Fk deAc="3" nm="entry_control" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="user_profiles" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="entry_control" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="FAQ">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkFAQ"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="question" nu="0">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="answer" nu="0">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="locality">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pklocality"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="60" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cp" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_province" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="province" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="city" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="locality" oe="1" sch="schemaA" zr="0"/>
+        <ClPr cdCl="id_province" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="pictures">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkpictures"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="location" nu="0">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="property">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkproperty"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="price" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="roommate_man" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="roommate_women" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="freefrom" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="freeuntil" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="search" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="size" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="adress" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_city" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lat" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="long" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="resources">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC</TblOpts>
+      <Pk ClNs="id" nm="pkresources"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="type" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="controller" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="function" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="added_by" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="edited_by" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="added_on" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="edited_on" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="roles">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC</TblOpts>
+      <Pk ClNs="id" nm="pkroles"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="inherit_id" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="redirect" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="default" nu="0">
+        <DT arr="0" ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="998" nm="order" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="rules">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC</TblOpts>
+      <Pk ClNs="id" nm="pkrules"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="role_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="type" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="resource_controller" nu="0">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="resource_function" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="1" nm="status" nu="0">
+        <DT arr="0" ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="session">
+      <TblOpts>ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC</TblOpts>
+      <Pk ClNs="id" nm="pksession"/>
+      <Cl au="0" df="0" nm="id" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="40" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="ip_address" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="16" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_agent" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="120" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="last_activity" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_data" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="status">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC</TblOpts>
+      <Pk ClNs="id" nm="pkstatus"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="10" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="code" nu="0">
+        <DT arr="0" ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="telephone_numbers">
+      <Cm>telefon numbers of the users</Cm>
+      <TblOpts/>
+      <Pk ClNs="telephone_number_id" nm="pktelephone_numbers"/>
+      <Cl au="0" df="" nm="telephone_number_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="telephone_number" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="25" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="telephone_number_id" prLkCl="telephon_number" upAc="3">
+        <PrTb mn="0" nm="user_profiles" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="telephone_numbers" oe="1" sch="schemaA" zr="0"/>
+        <ClPr cdCl="telephone_number_id" prCl="telephon_number"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user_profiles">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC</TblOpts>
+      <Pk ClNs="id" nm="pkuser_profiles"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="surname" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="email" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_status_code" nu="0">
+        <DT arr="0" ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lastaccess" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="added" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="edited" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="added_by" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="edited_by" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="desingnation" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="subtitle" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="60" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="biography" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="language_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="gender" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="document_number" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="24" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="telephon_number" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="studies" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="adress_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="picture" nu="0">
+        <DT arr="0" ds="BLOB" en="" id="2004" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="first_entry" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user_status">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkuser_status"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="130" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="code" nu="1">
+        <DT arr="0" ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user_thumbs">
+      <TblOpts/>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="users">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC</TblOpts>
+      <Pk ClNs="id" nm="pkusers"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="username" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="password" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="64" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="role_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="auth" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <CustomTypes/>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf ClkAct="true" FtSz="9" lkStgy="OffsetDirect" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>DbwErNotation</ErNotation>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="resources" x="1628" y="138"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="roles" x="1637" y="497"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="rules" x="1630" y="19"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="session" x="1630" y="277"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="user_profiles" x="868" y="175"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="status" x="1640" y="616"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="users" x="1633" y="385"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="telephone_numbers" x="1251" y="180"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="entry_control" x="1123" y="486"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="FAQ" x="217" y="291"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="user_status" x="1851" y="265"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="property" x="424" y="188"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="pictures" x="310" y="91"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="country" x="329" y="466"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="city" x="626" y="476"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="locality" x="635" y="606"/>
+    <FkGl bkCl="ff000000" nm="schemaA.city.country"/>
+    <FkGl bkCl="ff000000" nm="schemaA.city.id_city"/>
+    <FkGl bkCl="ff000000" nm="schemaA.entry_control.entry_control"/>
+    <FkGl bkCl="ff000000" nm="schemaA.locality.province"/>
+    <FkGl bkCl="ff000000" nm="schemaA.telephone_numbers.telephone_number_id"/>
+    <Notes/>
+    <Zones/>
+  </Dgm>
+  <RnmMgr NxRnmId="90">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="1" nNm="user_privacies" oNm="user_privacy"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="2" nNm="user_thumbs" oNm="thumbs"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="3" nNm="register_modes" oNm="register_mode"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="38" nNm="subtitle" oNm="user_profile_subtitle"/>
+      <Rnm id="4" nNm="user_profile_subtitle" oNm="user_profile_subtitulo"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="5" nNm="sections" oNm="sessions"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="6" nNm="roles" oNm="cizacl_roles"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="roles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="7" nNm="id" oNm="cizacl_role_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="roles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="8" nNm="name" oNm="cizacl_role_name"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="roles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="9" nNm="inherit_id" oNm="cizacl_role_inherit_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="roles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="10" nNm="redirect" oNm="cizacl_role_redirect"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="roles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="11" nNm="description" oNm="cizacl_role_description"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="roles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="12" nNm="default" oNm="cizacl_role_default"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="roles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="13" nNm="order" oNm="cizacl_role_order"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="14" nNm="resources" oNm="cizacl_resources"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="15" nNm="controller" oNm="cizacl_resource_controller"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="16" nNm="type" oNm="cizacl_resource_type"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="17" nNm="id" oNm="cizacl_resource_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="18" nNm="function" oNm="cizacl_resource_function"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="19" nNm="description" oNm="cizacl_resource_description"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="20" nNm="added_by" oNm="cizacl_resource_added_by"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="21" nNm="edited_by" oNm="cizacl_resource_edited_by"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="22" nNm="added_on" oNm="cizacl_resource_added_on"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="23" nNm="edited_on" oNm="cizacl_resource_edited_on"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="session" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="24" nNm="id" oNm="session_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="25" nNm="session" oNm="cizacl_session"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="26" nNm="id" oNm="user_profile_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="27" nNm="user_id" oNm="user_profile_user_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="28" nNm="name" oNm="user_profile_name"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="29" nNm="surname" oNm="user_profile_surname"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="30" nNm="email" oNm="user_profile_email"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="31" nNm="user_status_code" oNm="user_profile_user_status_code"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="32" nNm="lastaccess" oNm="user_profile_lastaccess"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="33" nNm="added" oNm="user_profile_added"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="34" nNm="edited" oNm="user_profile_edited"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="35" nNm="added_by" oNm="user_profile_added_by"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="36" nNm="edited_by" oNm="user_profile_edited_by"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="37" nNm="desingnation" oNm="user_profile_desingnation"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="39" nNm="biography" oNm="user_profile_biography"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="40" nNm="language_id" oNm="user_profile_language_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="41" nNm="id" oNm="user_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="42" nNm="username" oNm="user_username"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="43" nNm="password" oNm="user_password"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="44" nNm="role_id" oNm="user_cizacl_role_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="45" nNm="auth" oNm="user_auth"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="46" nNm="date" oNm="user_auth_date"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="47" nNm="status" oNm="user_status"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="status" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="48" nNm="id" oNm="user_status_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="status" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="49" nNm="name" oNm="user_status_name"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="status" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="50" nNm="code" oNm="user_status_code"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="rules" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="51" nNm="id" oNm="cizacl_rule_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="rules" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="60" nNm="role_id" oNm="cizacl_role_id"/>
+      <Rnm id="52" nNm="cizacl_role_id" oNm="cizacl_rule_cizacl_role_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="rules" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="53" nNm="type" oNm="cizacl_rule_type"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="rules" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="56" nNm="resource_controller" oNm="cizacl_resource_controller"/>
+      <Rnm id="54" nNm="cizacl_resource_controller" oNm="cizacl_rule_cizacl_resource_controller"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="rules" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="55" nNm="resource_function" oNm="cizacl_rule_cizacl_resource_function"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="rules" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="57" nNm="status" oNm="cizacl_rule_status"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="rules" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="58" nNm="description" oNm="cizacl_rule_description"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="59" nNm="rules" oNm="cizacl_rules"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="telephone_numbers" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="66" nNm="telephone_number_id" oNm="telephone_number"/>
+      <Rnm id="61" nNm="telephone_number" oNm="telephone_numbersId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="telephone_numbers" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="67" nNm="telephone_number" oNm="description"/>
+      <Rnm id="62" nNm="description" oNm="telephone_numbersName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="adresses" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="69" nNm="adress_id" oNm="id"/>
+      <Rnm id="63" nNm="id" oNm="consignmentId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="adresses" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="65" nNm="adress" oNm="city"/>
+      <Rnm id="64" nNm="city" oNm="consignmentName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="68" nNm="adresses" oNm="consignment"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="despatchs" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="71" nNm="delivery_day" oNm="delivery_date"/>
+      <Rnm id="70" nNm="delivery_date" oNm="date"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="notifications" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="72" nNm="description" oNm="notificationsName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="notifications" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="73" nNm="id" oNm="notificationsId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="courses" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="74" nNm="id_requirement" oNm="id_requirements"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="75" nNm="lessons" oNm="lectures"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="property" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="76" nNm="id" oNm="propertyId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="property_type" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="77" nNm="id" oNm="property_typeId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="property_type" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="78" nNm="name" oNm="property_typeName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="property" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="79" nNm="price" oNm="propertyName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="pictures" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="80" nNm="id" oNm="picturesId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="pictures" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="81" nNm="name" oNm="picturesName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="pictures" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="82" nNm="location" oNm="InsertBy"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="country" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="83" nNm="id" oNm="countryId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="country" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="84" nNm="name" oNm="countryName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="locality" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="85" nNm="id" oNm="localityId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="locality" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="86" nNm="name" oNm="localityName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="locality" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="87" nNm="cp" oNm="InsertBy"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="88" nNm="city" oNm="province"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="property" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="89" nNm="id_city" oNm="city"/>
+    </RnmCh>
+  </RnmMgr>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+  <OpenEditors>
+    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="1"/>
+  </OpenEditors>
+  <TreePaths>
+    <TreePath/>
+    <TreePath>/Schemas (1)</TreePath>
+    <TreePath>/Schemas (1)/schemaA</TreePath>
+    <TreePath>/Schemas (1)/schemaA/Tables (18)</TreePath>
+    <TreePath>/Diagrams (1)</TreePath>
+    <TreePath>/Diagrams (1)/diagramA</TreePath>
+    <TreePath>/Diagrams (1)/diagramA/Notes (0)</TreePath>
+    <TreePath>/Diagrams (1)/diagramA/Zones (0)</TreePath>
+  </TreePaths>
+</Db>
