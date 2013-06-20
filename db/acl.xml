@@ -26,44 +26,42 @@
       <Cl au="0" df="" nm="country" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
       </Cl>
-      <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="city">
+    <Tbl UsSo="1" nm="cities">
       <TblOpts/>
-      <Pk ClNs="id" nm="pkcity"/>
+      <Pk ClNs="id" nm="pkcities"/>
       <Cl au="0" df="" nm="id" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="name" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="id_country" nu="0">
+      <Cl au="0" df="" nm="locale_id" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Fk deAc="3" nm="country" prLkCl="id" upAc="3">
-        <PrTb mn="0" nm="country" oe="1" sch="schemaA" zr="0"/>
-        <CdTb mn="1" nm="city" oe="1" sch="schemaA" zr="0"/>
-        <ClPr cdCl="id_country" prCl="id"/>
+      <Fk deAc="3" nm="cities_locale_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="locales" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="cities" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="locale_id" prCl="id"/>
       </Fk>
-      <Fk deAc="3" nm="id_city" prLkCl="id_city" upAc="3">
-        <PrTb mn="0" nm="property" oe="1" sch="schemaA" zr="0"/>
-        <CdTb mn="0" nm="city" oe="1" sch="schemaA" zr="0"/>
-        <ClPr cdCl="id" prCl="id_city"/>
-      </Fk>
-      <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="country">
+    <Tbl UsSo="1" nm="countries">
       <TblOpts/>
-      <Pk ClNs="id" nm="pkcountry"/>
+      <Pk ClNs="id" nm="pkcountries"/>
       <Cl au="0" df="" nm="id" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="name" nu="0">
+      <Cl au="0" df="" nm="name" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
       </Cl>
-      <UniqueConstraints/>
+      <Cl au="0" df="" nm="lat" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lon" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="entry_control">
@@ -80,17 +78,11 @@
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
         <Cm>who much time what activ the session of the user</Cm>
       </Cl>
-      <Fk deAc="3" nm="entry_control" prLkCl="id" upAc="3">
-        <PrTb mn="0" nm="user_profiles" oe="1" sch="schemaA" zr="0"/>
-        <CdTb mn="1" nm="entry_control" oe="0" sch="schemaA" zr="1"/>
-        <ClPr cdCl="id" prCl="id"/>
-      </Fk>
-      <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="FAQ">
+    <Tbl UsSo="1" nm="faqs">
       <TblOpts/>
-      <Pk ClNs="id" nm="pkFAQ"/>
+      <Pk ClNs="id" nm="pkfaqs"/>
       <Cl au="0" df="" nm="id" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
@@ -100,12 +92,15 @@
       <Cl au="0" df="" nm="answer" nu="0">
         <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="locality">
+    <Tbl UsSo="1" nm="languages">
       <TblOpts/>
-      <Pk ClNs="id" nm="pklocality"/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="locales">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pklocales"/>
       <Cl au="0" df="" nm="id" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
@@ -115,15 +110,14 @@
       <Cl au="0" df="" nm="cp" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="id_province" nu="0">
+      <Cl au="0" df="" nm="country_id" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Fk deAc="3" nm="province" prLkCl="id" upAc="3">
-        <PrTb mn="0" nm="city" oe="1" sch="schemaA" zr="0"/>
-        <CdTb mn="1" nm="locality" oe="1" sch="schemaA" zr="0"/>
-        <ClPr cdCl="id_province" prCl="id"/>
+      <Fk deAc="3" nm="locales_country_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="countries" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="locales" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="country_id" prCl="id"/>
       </Fk>
-      <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="pictures">
@@ -138,12 +132,22 @@
       <Cl au="0" df="" nm="location" nu="0">
         <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="property">
+    <Tbl UsSo="1" nm="place_types">
       <TblOpts/>
-      <Pk ClNs="id" nm="pkproperty"/>
+      <Pk ClNs="id" nm="pkplace_types"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="places">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkplaces"/>
       <Cl au="0" df="" nm="id" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
@@ -171,16 +175,65 @@
       <Cl au="0" df="" nm="adress" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="id_city" nu="0">
+      <Cl au="0" df="" nm="lat" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lon" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="country_id" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="lat" nu="0">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      <Cl au="0" df="" nm="locale_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="long" nu="0">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      <Cl au="0" df="" nm="city_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <UniqueConstraints/>
+      <Cl au="0" df="" nm="user_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="place_type_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="rent_type_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="properties_user_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="users" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="places" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="user_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="users_city_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="cities" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="places" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="city_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="users_country_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="countries" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="places" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="country_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="users_locale_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="locales" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="places" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="locale_id" prCl="id"/>
+      </Fk>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="rent_types">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkrent_types"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="requests">
+      <TblOpts/>
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="resources">
@@ -192,10 +245,10 @@
       <Cl au="0" df="" nm="type" nu="0">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="controller" nu="0">
+      <Cl au="0" df="" nm="resource_controller" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="function" nu="1">
+      <Cl au="0" df="" nm="resource_function" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="description" nu="1">
@@ -213,7 +266,6 @@
       <Cl au="0" df="" nm="edited_on" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="roles">
@@ -240,7 +292,6 @@
       <Cl au="0" df="998" nm="order" nu="0">
         <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="0" un="0"/>
       </Cl>
-      <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="rules">
@@ -267,12 +318,11 @@
       <Cl au="0" df="" nm="description" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
       </Cl>
-      <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="session">
+    <Tbl UsSo="1" nm="sessions">
       <TblOpts>ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC</TblOpts>
-      <Pk ClNs="id" nm="pksession"/>
+      <Pk ClNs="id" nm="pksessions"/>
       <Cl au="0" df="0" nm="id" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="40" sc="null" sg="1" un="0"/>
       </Cl>
@@ -288,7 +338,6 @@
       <Cl au="0" df="" nm="user_data" nu="1">
         <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="status">
@@ -303,43 +352,79 @@
       <Cl au="0" df="" nm="code" nu="0">
         <DT arr="0" ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="telephone_numbers">
+    <Tbl UsSo="1" nm="telephones">
       <Cm>telefon numbers of the users</Cm>
       <TblOpts/>
-      <Pk ClNs="telephone_number_id" nm="pktelephone_numbers"/>
-      <Cl au="0" df="" nm="telephone_number_id" nu="0">
+      <Pk ClNs="id" nm="pktelephones"/>
+      <Cl au="0" df="" nm="id" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="telephone_number" nu="0">
+      <Cl au="0" df="" nm="number" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="description" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="25" sc="null" sg="1" un="0"/>
       </Cl>
-      <Fk deAc="3" nm="telephone_number_id" prLkCl="telephon_number" upAc="3">
-        <PrTb mn="0" nm="user_profiles" oe="1" sch="schemaA" zr="0"/>
-        <CdTb mn="1" nm="telephone_numbers" oe="1" sch="schemaA" zr="0"/>
-        <ClPr cdCl="telephone_number_id" prCl="telephon_number"/>
-      </Fk>
-      <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="user_profiles">
-      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC</TblOpts>
-      <Pk ClNs="id" nm="pkuser_profiles"/>
-      <Cl au="1" df="" nm="id" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+    <Tbl UsSo="1" nm="user_avatars">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkuser_avatars"/>
+      <Cl au="0" df="" nm="id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="user_id" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      <Cl au="0" df="" nm="file_name" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="name" nu="0">
+      <Cl au="0" df="" nm="file_type" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="surname" nu="0">
+      <Cl au="0" df="" nm="file_size" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="user_avatars_user_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="users" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="0" nm="user_avatars" oe="1" sch="schemaA" zr="0"/>
+        <ClPr cdCl="user_id" prCl="id"/>
+      </Fk>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user_status">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkuser_status"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="130" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="code" nu="1">
+        <DT arr="0" ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user_thumbs">
+      <TblOpts/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="users">
+      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC</TblOpts>
+      <Pk ClNs="id" nm="pkusers"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="username" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="first_name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="last_name" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="email" nu="1">
@@ -351,17 +436,8 @@
       <Cl au="0" df="" nm="lastaccess" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="added" nu="1">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="edited" nu="1">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="added_by" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="edited_by" nu="1">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      <Cl au="0" df="" nm="password" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="desingnation" nu="1">
         <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
@@ -378,75 +454,45 @@
       <Cl au="0" df="" nm="gender" nu="0">
         <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="document_number" nu="0">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="24" sc="null" sg="1" un="0"/>
-      </Cl>
       <Cl au="0" df="" nm="telephon_number" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="studies" nu="0">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="adress_id" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="picture" nu="0">
-        <DT arr="0" ds="BLOB" en="" id="2004" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
       <Cl au="0" df="" nm="first_entry" nu="0">
         <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
-    <Tbl UsSo="1" nm="user_status">
-      <TblOpts/>
-      <Pk ClNs="id" nm="pkuser_status"/>
-      <Cl au="1" df="" nm="id" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="name" nu="1">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="130" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="code" nu="1">
-        <DT arr="0" ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
-    <Tbl UsSo="1" nm="user_thumbs">
-      <TblOpts/>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
-    <Tbl UsSo="1" nm="users">
-      <TblOpts>ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC</TblOpts>
-      <Pk ClNs="id" nm="pkusers"/>
-      <Cl au="1" df="" nm="id" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="username" nu="0">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="password" nu="0">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="64" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="role_id" nu="0">
+      <Cl au="0" df="" nm="role_id" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="auth" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="date" nu="1">
+      <Cl au="0" df="" nm="logins" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <UniqueConstraints/>
+      <Cl au="0" df="" nm="facebook" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="twitter" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="googleplus" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="added" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="edited" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
       <SchTrHis/>
     </Tbl>
     <CustomTypes/>
   </Sch>
   <Dgm nm="diagramA">
-    <RnCf ClkAct="true" FtSz="9" lkStgy="OffsetDirect" zm="1.0">
+    <RnCf FtSz="9" lkStgy="OffsetDirect" zm="1.0">
       <VbCfg>
         <Fg ky="Auto Number" vl="0"/>
         <Fg ky="Check" vl="0"/>
@@ -466,31 +512,37 @@
       <ErNotation>DbwErNotation</ErNotation>
       <svg path=""/>
     </DiaProps>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="resources" x="1628" y="138"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="roles" x="1637" y="497"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="rules" x="1630" y="19"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="session" x="1630" y="277"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="user_profiles" x="868" y="175"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="status" x="1640" y="616"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="users" x="1633" y="385"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="telephone_numbers" x="1251" y="180"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="entry_control" x="1123" y="486"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="FAQ" x="217" y="291"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="user_status" x="1851" y="265"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="property" x="424" y="188"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="pictures" x="310" y="91"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="country" x="329" y="466"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="city" x="626" y="476"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="locality" x="635" y="606"/>
-    <FkGl bkCl="ff000000" nm="schemaA.city.country"/>
-    <FkGl bkCl="ff000000" nm="schemaA.city.id_city"/>
-    <FkGl bkCl="ff000000" nm="schemaA.entry_control.entry_control"/>
-    <FkGl bkCl="ff000000" nm="schemaA.locality.province"/>
-    <FkGl bkCl="ff000000" nm="schemaA.telephone_numbers.telephone_number_id"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="resources" x="1433" y="314"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="roles" x="1174" y="224"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="rules" x="1424" y="78"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="sessions" x="1743" y="207"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="users" x="881" y="176"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="status" x="1750" y="419"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="telephones" x="1175" y="413"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="entry_control" x="1454" y="498"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="faqs" x="234" y="181"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="user_status" x="1748" y="323"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="places" x="465" y="186"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="pictures" x="234" y="101"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="countries" x="472" y="431"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="cities" x="724" y="568"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="locales" x="477" y="563"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="user_avatars" x="693" y="53"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="requests" x="951" y="567"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="languages" x="1092" y="565"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="place_types" x="172" y="388"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="rent_types" x="172" y="453"/>
+    <FkGl bkCl="ff000000" nm="schemaA.cities.cities_locale_id"/>
+    <FkGl bkCl="ff000000" nm="schemaA.locales.locales_country_id"/>
+    <FkGl bkCl="ff000000" nm="schemaA.places.properties_user_id"/>
+    <FkGl bkCl="ff000000" nm="schemaA.places.users_city_id"/>
+    <FkGl bkCl="ff000000" nm="schemaA.places.users_country_id"/>
+    <FkGl bkCl="ff000000" nm="schemaA.places.users_locale_id"/>
+    <FkGl bkCl="ff000000" nm="schemaA.user_avatars.user_avatars_user_id"/>
     <Notes/>
     <Zones/>
   </Dgm>
-  <RnmMgr NxRnmId="90">
+  <RnmMgr NxRnmId="123">
     <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
       <Rnm id="1" nNm="user_privacies" oNm="user_privacy"/>
     </RnmCh>
@@ -500,7 +552,7 @@
     <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
       <Rnm id="3" nNm="register_modes" oNm="register_mode"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
       <Rnm id="38" nNm="subtitle" oNm="user_profile_subtitle"/>
       <Rnm id="4" nNm="user_profile_subtitle" oNm="user_profile_subtitulo"/>
     </RnmCh>
@@ -535,6 +587,7 @@
       <Rnm id="14" nNm="resources" oNm="cizacl_resources"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="116" nNm="resource_controller" oNm="controller"/>
       <Rnm id="15" nNm="controller" oNm="cizacl_resource_controller"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
@@ -544,6 +597,7 @@
       <Rnm id="17" nNm="id" oNm="cizacl_resource_id"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="117" nNm="resource_function" oNm="function"/>
       <Rnm id="18" nNm="function" oNm="cizacl_resource_function"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
@@ -561,52 +615,57 @@
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="resources" SupCls="Schema" SupNme="schemaA">
       <Rnm id="23" nNm="edited_on" oNm="cizacl_resource_edited_on"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="session" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="sessions" SupCls="Schema" SupNme="schemaA">
       <Rnm id="24" nNm="id" oNm="session_id"/>
     </RnmCh>
     <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="97" nNm="sessions" oNm="session"/>
       <Rnm id="25" nNm="session" oNm="cizacl_session"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
       <Rnm id="26" nNm="id" oNm="user_profile_id"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="92" nNm="username" oNm="user_id"/>
       <Rnm id="27" nNm="user_id" oNm="user_profile_user_id"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="93" nNm="first_name" oNm="name"/>
       <Rnm id="28" nNm="name" oNm="user_profile_name"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="94" nNm="last_name" oNm="surname"/>
       <Rnm id="29" nNm="surname" oNm="user_profile_surname"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
       <Rnm id="30" nNm="email" oNm="user_profile_email"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
       <Rnm id="31" nNm="user_status_code" oNm="user_profile_user_status_code"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
       <Rnm id="32" nNm="lastaccess" oNm="user_profile_lastaccess"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
       <Rnm id="33" nNm="added" oNm="user_profile_added"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
       <Rnm id="34" nNm="edited" oNm="user_profile_edited"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="95" nNm="password" oNm="added_by"/>
       <Rnm id="35" nNm="added_by" oNm="user_profile_added_by"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
       <Rnm id="36" nNm="edited_by" oNm="user_profile_edited_by"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
       <Rnm id="37" nNm="desingnation" oNm="user_profile_desingnation"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
       <Rnm id="39" nNm="biography" oNm="user_profile_biography"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_profiles" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
       <Rnm id="40" nNm="language_id" oNm="user_profile_language_id"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="users" SupCls="Schema" SupNme="schemaA">
@@ -665,11 +724,13 @@
     <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
       <Rnm id="59" nNm="rules" oNm="cizacl_rules"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="telephone_numbers" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="telephones" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="111" nNm="id" oNm="telephone_number_id"/>
       <Rnm id="66" nNm="telephone_number_id" oNm="telephone_number"/>
       <Rnm id="61" nNm="telephone_number" oNm="telephone_numbersId"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="telephone_numbers" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="telephones" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="112" nNm="number" oNm="telephone_number"/>
       <Rnm id="67" nNm="telephone_number" oNm="description"/>
       <Rnm id="62" nNm="description" oNm="telephone_numbersName"/>
     </RnmCh>
@@ -700,7 +761,7 @@
     <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
       <Rnm id="75" nNm="lessons" oNm="lectures"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="property" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="places" SupCls="Schema" SupNme="schemaA">
       <Rnm id="76" nNm="id" oNm="propertyId"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="property_type" SupCls="Schema" SupNme="schemaA">
@@ -709,7 +770,7 @@
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="property_type" SupCls="Schema" SupNme="schemaA">
       <Rnm id="78" nNm="name" oNm="property_typeName"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="property" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="places" SupCls="Schema" SupNme="schemaA">
       <Rnm id="79" nNm="price" oNm="propertyName"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="pictures" SupCls="Schema" SupNme="schemaA">
@@ -721,26 +782,76 @@
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="pictures" SupCls="Schema" SupNme="schemaA">
       <Rnm id="82" nNm="location" oNm="InsertBy"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="country" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="countries" SupCls="Schema" SupNme="schemaA">
       <Rnm id="83" nNm="id" oNm="countryId"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="country" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="countries" SupCls="Schema" SupNme="schemaA">
       <Rnm id="84" nNm="name" oNm="countryName"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="locality" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="locales" SupCls="Schema" SupNme="schemaA">
       <Rnm id="85" nNm="id" oNm="localityId"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="locality" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="locales" SupCls="Schema" SupNme="schemaA">
       <Rnm id="86" nNm="name" oNm="localityName"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="locality" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="locales" SupCls="Schema" SupNme="schemaA">
       <Rnm id="87" nNm="cp" oNm="InsertBy"/>
     </RnmCh>
     <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="102" nNm="cities" oNm="city"/>
       <Rnm id="88" nNm="city" oNm="province"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="property" SupCls="Schema" SupNme="schemaA">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="places" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="115" nNm="locale_id" oNm="locale_ids"/>
+      <Rnm id="113" nNm="locale_ids" oNm="city_id"/>
+      <Rnm id="99" nNm="city_id" oNm="id_city"/>
       <Rnm id="89" nNm="id_city" oNm="city"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="91" nNm="telephones" oNm="telephone"/>
+      <Rnm id="90" nNm="telephone" oNm="telephone_numbers"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="96" nNm="users" oNm="user_profiles"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="98" nNm="faqs" oNm="FAQ"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="120" nNm="places" oNm="properties"/>
+      <Rnm id="100" nNm="properties" oNm="property"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="101" nNm="countries" oNm="country"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="109" nNm="locales" oNm="localities"/>
+      <Rnm id="103" nNm="localities" oNm="locality"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="cities" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="107" nNm="country_id" oNm="province_id"/>
+      <Rnm id="106" nNm="province_id" oNm="country_id"/>
+      <Rnm id="104" nNm="country_id" oNm="id_country"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="locales" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="108" nNm="country_id" oNm="province_id"/>
+      <Rnm id="105" nNm="province_id" oNm="id_province"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="places" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="114" nNm="city_id" oNm="locale_id"/>
+      <Rnm id="110" nNm="locale_id" oNm="locality_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="places" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="118" nNm="lon" oNm="long"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="119" nNm="user_avatars" oNm="avatars"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
+      <Rnm id="121" nNm="place_types" oNm="place_categories"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="places" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="122" nNm="rent_type_id" oNm="ren_type_id"/>
     </RnmCh>
   </RnmMgr>
   <DbDocOptionMgr>
@@ -765,7 +876,7 @@
     <TreePath/>
     <TreePath>/Schemas (1)</TreePath>
     <TreePath>/Schemas (1)/schemaA</TreePath>
-    <TreePath>/Schemas (1)/schemaA/Tables (18)</TreePath>
+    <TreePath>/Schemas (1)/schemaA/Tables (22)</TreePath>
     <TreePath>/Diagrams (1)</TreePath>
     <TreePath>/Diagrams (1)/diagramA</TreePath>
     <TreePath>/Diagrams (1)/diagramA/Notes (0)</TreePath>
