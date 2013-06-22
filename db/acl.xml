@@ -148,6 +148,30 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
+    <Tbl UsSo="1" nm="payment_options">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkpayment_options"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="0">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="account" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="image_name" nu="0">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="image_location" nu="0">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="pictures">
       <TblOpts/>
       <Pk ClNs="id" nm="pkpictures"/>
@@ -377,6 +401,26 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
+    <Tbl UsSo="1" nm="plans_config">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkplans_config"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="feature" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="config" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="id_plans_config" prLkCl="config_id" upAc="3">
+        <PrTb mn="0" nm="user_plans" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="plans_config" oe="1" sch="schemaA" zr="0"/>
+        <ClPr cdCl="id" prCl="config_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="references">
       <TblOpts/>
       <Pk ClNs="id" nm="pkreferences"/>
@@ -597,6 +641,29 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
+    <Tbl UsSo="1" nm="user_plans">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkuser_plans"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description" nu="0">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="price" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="config_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="id_user_plans" prLkCl="user_plan_id" upAc="3">
+        <PrTb mn="0" nm="users" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="0" nm="user_plans" oe="1" sch="schemaA" zr="0"/>
+        <ClPr cdCl="id" prCl="user_plan_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="user_preferences">
       <TblOpts/>
       <Pk ClNs="id" nm="pkuser_preferences"/>
@@ -777,13 +844,16 @@
       <Cl au="0" df="" nm="preferences_id" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
+      <Cl au="0" df="" nm="user_plan_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
     <CustomTypes/>
   </Sch>
   <Dgm nm="diagramA">
-    <RnCf ClkAct="true" FtSz="9" lkStgy="OffsetDirect" zm="0.5">
+    <RnCf ClkAct="true" FtSz="9" lkStgy="OffsetDirect" zm="1.0">
       <VbCfg>
         <Fg ky="Auto Number" vl="0"/>
         <Fg ky="Check" vl="0"/>
@@ -809,7 +879,7 @@
     <TbGl bkCl="ffccccff" sch="schemaA" tbl="sessions" x="2458" y="255"/>
     <TbGl bkCl="ffccccff" sch="schemaA" tbl="users" x="1278" y="323"/>
     <TbGl bkCl="ffccccff" sch="schemaA" tbl="status" x="2465" y="467"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="telephones" x="1295" y="653"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="telephones" x="1300" y="677"/>
     <TbGl bkCl="ffccccff" sch="schemaA" tbl="entry_control" x="2169" y="546"/>
     <TbGl bkCl="ffccccff" sch="schemaA" tbl="faqs" x="110" y="676"/>
     <TbGl bkCl="ffccccff" sch="schemaA" tbl="user_status" x="2463" y="371"/>
@@ -829,9 +899,12 @@
     <TbGl bkCl="ffccccff" sch="schemaA" tbl="places_other_description" x="792" y="111"/>
     <TbGl bkCl="ffccccff" sch="schemaA" tbl="places_details" x="885" y="184"/>
     <TbGl bkCl="ffccccff" sch="schemaA" tbl="user_searches" x="949" y="532"/>
-    <TbGl bkCl="ffccccff" sch="schemaA" tbl="user_preferences" x="1709" y="535"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="user_preferences" x="1709" y="457"/>
     <TbGl bkCl="ffccccff" sch="schemaA" tbl="references" x="1701" y="354"/>
     <TbGl bkCl="ffccccff" sch="schemaA" tbl="user_request" x="951" y="327"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="user_plans" x="1656" y="646"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="plans_config" x="1951" y="648"/>
+    <TbGl bkCl="ffccccff" sch="schemaA" tbl="payment_options" x="1660" y="773"/>
     <FkGl bkCl="ff000000" nm="schemaA.cities.cities_locale_id"/>
     <FkGl bkCl="ff000000" nm="schemaA.languages.id_languages_places"/>
     <FkGl bkCl="ff000000" nm="schemaA.locales.locales_country_id"/>
@@ -846,11 +919,13 @@
     <FkGl bkCl="ff000000" nm="schemaA.places_location_description.id_places_location_description"/>
     <FkGl bkCl="ff000000" nm="schemaA.places_other_description.id_places_other_description"/>
     <FkGl bkCl="ff000000" nm="schemaA.places_room_description.id_places_room_description"/>
+    <FkGl bkCl="ff000000" nm="schemaA.plans_config.id_plans_config"/>
     <FkGl bkCl="ff000000" nm="schemaA.references.id_user"/>
     <FkGl bkCl="ff000000" nm="schemaA.references.id_user_referencer"/>
     <FkGl bkCl="ff000000" nm="schemaA.rent_types.id_rent_types"/>
     <FkGl bkCl="ff000000" nm="schemaA.telephones.id_telephon_number"/>
     <FkGl bkCl="ff000000" nm="schemaA.user_avatars.user_avatars_user_id"/>
+    <FkGl bkCl="ff000000" nm="schemaA.user_plans.id_user_plans"/>
     <FkGl bkCl="ff000000" nm="schemaA.user_preferences.id_preferences"/>
     <FkGl bkCl="ff000000" nm="schemaA.user_request.id_places"/>
     <FkGl bkCl="ff000000" nm="schemaA.user_request.id_user"/>
@@ -859,7 +934,7 @@
     <Notes/>
     <Zones/>
   </Dgm>
-  <RnmMgr NxRnmId="153">
+  <RnmMgr NxRnmId="161">
     <RnmCh ObjCls="Table" ParCls="Schema" ParNme="schemaA" SupCls="" SupNme="">
       <Rnm id="1" nNm="user_privacies" oNm="user_privacy"/>
     </RnmCh>
@@ -1252,6 +1327,30 @@
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_request" SupCls="Schema" SupNme="schemaA">
       <Rnm id="152" nNm="user_id" oNm="user_requestName"/>
     </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_plans" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="153" nNm="id" oNm="user_plansId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="user_plans" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="154" nNm="description" oNm="user_plansName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="plans_config" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="155" nNm="id" oNm="plans_configId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="plans_config" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="156" nNm="feature" oNm="plans_configName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="plans_config" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="157" nNm="config" oNm="InsertBy"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="payment_options" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="158" nNm="id" oNm="payment_optionsId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="payment_options" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="159" nNm="name" oNm="payment_optionsName"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="payment_options" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="160" nNm="description" oNm="InsertBy"/>
+    </RnmCh>
   </RnmMgr>
   <DbDocOptionMgr>
     <BasicOptionMgr>
@@ -1275,7 +1374,7 @@
     <TreePath/>
     <TreePath>/Schemas (1)</TreePath>
     <TreePath>/Schemas (1)/schemaA</TreePath>
-    <TreePath>/Schemas (1)/schemaA/Tables (31)</TreePath>
+    <TreePath>/Schemas (1)/schemaA/Tables (34)</TreePath>
     <TreePath>/Diagrams (1)</TreePath>
     <TreePath>/Diagrams (1)/diagramA</TreePath>
     <TreePath>/Diagrams (1)/diagramA/Notes (0)</TreePath>
